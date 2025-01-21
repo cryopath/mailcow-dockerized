@@ -711,6 +711,7 @@
         "title": "Edit object",
         "unchanged_if_empty": "If unchanged leave blank",
         "username": "Username",
+        "vacation": "Vacation",
         "validate_save": "Validate and save"
     },
     "fido2": {

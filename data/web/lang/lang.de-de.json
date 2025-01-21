@@ -710,6 +710,7 @@
         "title": "Objekt bearbeiten",
         "unchanged_if_empty": "Unverändert, wenn leer",
         "username": "Benutzername",
+        "vacation": "Urlaubsmitteilungen",
         "validate_save": "Validieren und speichern",
         "pushover_sound": "Ton"
     },
