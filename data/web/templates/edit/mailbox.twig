@@ -296,6 +296,9 @@
             <form class="form-horizontal" data-id="vacation" role="form" method="post">
               <div class="row mb-2">
                 <label class="control-label col-sm-2" for="vacation_active">{{ lang.edit.vacation_active }}</label>
+                <div class="col-sm-10">
+                  <input type="checkbox" class="form-control" name="name" value="{{ result.vacation_active }}">
+                </div>
               </div>
               <div class="row mb-2">
                 <label class="control-label col-sm-2" for="customsubject">{{ lang.edit.vacation_customsubject }}</label>
