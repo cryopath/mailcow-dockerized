@@ -295,6 +295,9 @@
           <div id="collapse-tab-mvacation" class="card-body collapse" data-bs-parent="#mailbox-vacation">
             <form class="form-horizontal" data-id="vacation" role="form" method="post">
               <div class="row mb-2">
+                <label class="control-label col-sm-2" for="vacation_active">{{ lang.edit.vacation_active }}</label>
+              </div>
+              <div class="row mb-2">
                 <label class="control-label col-sm-2" for="customsubject">{{ lang.edit.vacation_customsubject }}</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="name" value="{{ result.customsubject }}">
