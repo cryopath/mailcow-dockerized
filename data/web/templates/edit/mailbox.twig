@@ -319,6 +319,21 @@
                   <textarea class="form-control" rows="5" name="replytext">{{ result.vacation_replytext }}</textarea>
                 </div>
               </div>
+              <div class="row">
+                <label class="control-label col-sm-2" for="vacation_repeat_delay">{{ lang.edit.vacation_repeat_delay }}</label>
+                <div class="offset-sm-2 col-sm-10">
+                  <select name="active" class="form-control">
+                    <option value="1"{% if result.active == '1' %} selected{% endif %}>{{ lang.constants.one }}</option>
+                    <option value="2"{% if result.active == '2' %} selected{% endif %}>{{ lang.constants.two }}</option>
+                    <option value="3"{% if result.active == '3' %} selected{% endif %}>{{ lang.constants.three }}</option>
+                    <option value="5"{% if result.active == '5' %} selected{% endif %}>{{ lang.constants.five }}</option>
+                    <option value="7"{% if result.active == '7' %} selected{% endif %}>{{ lang.constants.seven }}</option>
+                    <option value="14"{% if result.active == '14' %} selected{% endif %}>{{ lang.constants.fourteen }}</option>
+                    <option value="21"{% if result.active == '21' %} selected{% endif %}>{{ lang.constants.twentyone }}</option>
+                    <option value="30"{% if result.active == '30' %} selected{% endif %}>{{ lang.constants.thirty }}</option>
+                  </select>
+                </div>
+              </div>
               <div class="row mb-2">
                 <label class="control-label col-sm-2">{{ lang.edit.vacation_repeat_delay }}</label>
                 <div class="col-sm-10">
