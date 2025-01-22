@@ -724,7 +724,7 @@
         "vacation": "Vacation Autoreply",
         "vacation_active": "Vacation active",
         "vacation_customsubject": "Subject",
-        "vacation_customsubject_info": "If empty, will",
+        "vacation_customsubject_info": "You can write ${subject} to insert the original subject",
         "vacation_dont_autoreply_lists": "Excluded from autoreply",
         "vacation_repeat_delay": "Delay until new vacation reminder",
         "vacation_repeat_delay_info": "vacation repeat delay info",
