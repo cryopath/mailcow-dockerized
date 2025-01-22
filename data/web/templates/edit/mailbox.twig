@@ -5,7 +5,7 @@
 <div id="mailbox-content" class="responsive-tabs">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#medit">{{ lang.edit.mailbox }}</button></li>
-      <li role="presentation" class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#mvacation">{{ lang.edit.vacation }}nnnnnn</button></li>
+      <li role="presentation" class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#mvacation">{{ lang.edit.vacation }}</button></li>
       <li role="presentation" class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#mattr">{{ lang.edit.custom_attributes }}</button></li>
       <li role="presentation" class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#mpushover">{{ lang.edit.pushover }}</button></li>
       <li role="presentation" class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#macl">{{ lang.edit.acl }}</button></li>
@@ -307,7 +307,7 @@
                 </div>
               </div>
               <div class="row mb-2">
-                <label class="control-label col-sm-2">{{ lang.user.autoreply_repeat_delay }}</label>
+                <label class="control-label col-sm-2">{{ lang.edit.vacation_repeat_delay }}</label>
                 <div class="col-sm-10">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'one' %} btn-dark{% else %} btn-light{% endif %}"
@@ -315,71 +315,71 @@
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"one"}'>{{ lang.user.one }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"one"}'>{{ lang.constants.one }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'two' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"two"}'>{{ lang.user.two }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"two"}'>{{ lang.constants.two }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'three' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"three"}'>{{ lang.user.three }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"three"}'>{{ lang.constants.three }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'five' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"five"}'>{{ lang.user.five }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"five"}'>{{ lang.constants.five }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'seven' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"seven"}'>{{ lang.user.seven }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"seven"}'>{{ lang.constants.seven }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'fourteen' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"fourteen"}'>{{ lang.user.fourteen }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"fourteen"}'>{{ lang.constants.fourteen }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'twentyone' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"twentyone"}'>{{ lang.user.twentyone }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"twentyone"}'>{{ lang.constants.twentyone }}</button>
                     <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'thirty' %} btn-dark{% else %} btn-light{% endif %}"
                             data-action="edit_selected"
                             data-item="{{ mailbox }}"
                             data-id="autoreply_repeat_delay"
                             data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"thirty"}'>{{ lang.user.thirty }}</button>
+                            data-api-attr='{"autoreply_repeat_delay":"thirty"}'>{{ lang.constants.thirty }}</button>
                   </div>
-                  <p class="text-muted"><small>{{ lang.user.autoreply_repeat_delay_info }}</small></p>
+                  <p class="text-muted"><small>{{ lang.edit.vacation_repeat_delay_info }}</small></p>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="dont_autoreply_lists"> {{ lang.edit.dont_autoreply_lists }}</label>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="offset-sm-2 col-sm-10">
-                  <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_ignore_filter"> {{ lang.edit.autoreply_ignore_filter }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="dont_autoreply_lists"> {{ lang.edit.vacation_dont_autoreply_lists }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_discard_incoming"> {{ lang.edit.autoreply_discard_incoming }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_ignore_filter"> {{ lang.edit.vacation_ignore_filter }}</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="offset-sm-2 col-sm-10">
+                  <div class="form-check">
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_discard_incoming"> {{ lang.edit.vacation_discard_incoming }}</label>
                   </div>
                 </div>
               </div>
@@ -387,8 +387,8 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginday_active"> {{ lang.edit.autoreply_beginday_active }}
-                      <input type="date" class="form-check-input" name="autoreply_beginday"> {{ lang.edit.autoreply_beginday }}
+                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginday_active"> {{ lang.edit.vacation_beginday_active }}
+                      <input type="date" class="form-check-input" name="autoreply_beginday"> {{ lang.edit.vacation_beginday }}
                     </label>
                   </div>
                 </div>
@@ -397,8 +397,8 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endday_active"> {{ lang.edit.autoreply_endday_active }}
-                      <input type="date" class="form-check-input" name="autoreply_endday"> {{ lang.edit.autoreply_endday }}
+                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endday_active"> {{ lang.edit.vacation_endday_active }}
+                      <input type="date" class="form-check-input" name="autoreply_endday"> {{ lang.edit.vacation_endday }}
                     </label>
                   </div>
                 </div>
@@ -407,8 +407,8 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginhour_active"> {{ lang.edit.autoreply_beginhour_active }}
-                      <input type="time" class="form-check-input" name="autoreply_beginhour"> {{ lang.edit.autoreply_beginhour }}
+                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginhour_active"> {{ lang.edit.vacation_beginhour_active }}
+                      <input type="time" class="form-check-input" name="autoreply_beginhour"> {{ lang.edit.vacation_beginhour }}
                     </label>
                   </div>
                 </div>
@@ -417,8 +417,8 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endhour_active"> {{ lang.edit.autoreply_endhour_active }}
-                      <input type="time" class="form-check-input" name="autoreply_endhour"> {{ lang.edit.autoreply_endhour }}
+                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endhour_active"> {{ lang.edit.vacation_endhour_active }}
+                      <input type="time" class="form-check-input" name="autoreply_endhour"> {{ lang.edit.vacation_endhour }}
                     </label>
                   </div>
                 </div>
@@ -426,14 +426,14 @@
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_weekdays_active"> {{ lang.edit.autoreply_weekdays_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_monday_active"> {{ lang.edit.autoreply_monday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_tuesday_active"> {{ lang.edit.autoreply_tuesday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_wednesday_active"> {{ lang.edit.autoreply_wednesday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_thursday_active"> {{ lang.edit.autoreply_thursday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_friday_active"> {{ lang.edit.autoreply_friday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_saturday_active"> {{ lang.edit.autoreply_saturday_active }}</label>
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_sunday_active"> {{ lang.edit.autoreply_sunday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_weekdays_active"> {{ lang.edit.vacation_weekdays_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_monday_active"> {{ lang.edit.vacation_monday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_tuesday_active"> {{ lang.edit.vacation_tuesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_wednesday_active"> {{ lang.edit.vacation_wednesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_thursday_active"> {{ lang.edit.vacation_thursday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_friday_active"> {{ lang.edit.vacation_friday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_saturday_active"> {{ lang.edit.vacation_saturday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_sunday_active"> {{ lang.edit.vacation_sunday_active }}</label>
                   </div>
                 </div>
               </div>
