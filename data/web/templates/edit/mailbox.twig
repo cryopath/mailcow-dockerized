@@ -334,62 +334,6 @@
                   </select>
                 </div>
               </div>
-              <div class="row mb-2">
-                <label class="control-label col-sm-2">{{ lang.edit.vacation_repeat_delay }}</label>
-                <div class="col-sm-10">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'one' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"one"}'>{{ lang.constants.one }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'two' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"two"}'>{{ lang.constants.two }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'three' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"three"}'>{{ lang.constants.three }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'five' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"five"}'>{{ lang.constants.five }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'seven' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"seven"}'>{{ lang.constants.seven }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'fourteen' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"fourteen"}'>{{ lang.constants.fourteen }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'twentyone' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"twentyone"}'>{{ lang.constants.twentyone }}</button>
-                    <button type="button" class="btn btn-sm btn-xs-quart d-block d-sm-inline{% if autoreply_repeat_delay == 'thirty' %} btn-dark{% else %} btn-light{% endif %}"
-                            data-action="edit_selected"
-                            data-item="{{ mailbox }}"
-                            data-id="autoreply_repeat_delay"
-                            data-api-url='edit/autoreply_repeat_delay'
-                            data-api-attr='{"autoreply_repeat_delay":"thirty"}'>{{ lang.constants.thirty }}</button>
-                  </div>
-                  <p class="text-muted"><small>{{ lang.edit.vacation_repeat_delay_info }}</small></p>
-                </div>
-              </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
