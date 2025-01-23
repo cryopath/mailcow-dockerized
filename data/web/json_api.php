@@ -1698,6 +1698,13 @@ if (isset($_GET['query'])) {
             process_get_return($score);
           break;
         break;
+          case "vacation":
+            switch ($object) {
+              default:
+                $data = vacation('details', $object);
+                process_get_return($data);
+                break;
+            }
         // return no route found if no case is matched
         default:
           http_response_code(404);
@@ -2074,6 +2081,8 @@ if (isset($_GET['query'])) {
         case "reset-password-notification":
           process_edit_return(reset_password('edit_notification', $attr));
         break;
+        case "vacation":
+          process_edit_return(vacation('edit', 'vacation', array_merge(array('id' => $items), $attr)));
         // return no route found if no case is matched
         default:
           http_response_code(404);

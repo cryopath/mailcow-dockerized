@@ -303,7 +303,7 @@
               <div class="row mb-2">
                 <label class="control-label col-sm-2" for="customsubject_active">{{ lang.edit.vacation_customsubject_active }}</label>
                 <div class="col-sm-10">
-                  <input type="checkbox" class="form-check" name="customsubject_active" value="{{ result.vacation_customsubject_active }}">
+                  <input type="checkbox" class="form-check" name="customsubject_active" value="1" {% if result.customsubject_active == '1' %} checked{% endif %}>
                 </div>
               </div>
               <div class="row mb-2">
