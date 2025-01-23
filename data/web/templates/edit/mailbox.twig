@@ -353,9 +353,6 @@
                         {{ alias }}
                       </option>
                     {% endfor %}
-                    {% for alias in sender_acl_handles.fixed_sender_aliases %}
-                      <option data-subtext="Alias" disabled selected>{{ alias }}</option>
-                    {% endfor %}
                     {% for domain in sender_acl_handles.sender_acl_domains.selectable %}
                       <option value="{{ domain }}">
                         {{ lang.edit.dont_check_sender_acl|format(domain) }}
@@ -370,7 +367,13 @@
                   </select>
                 </div>
               </div>
-
+              <div class="row mt-2">
+                <div class="offset-sm-2 col-sm-10">
+                  <div class="form-check">
+                    <label><input type="checkbox" class="form-check-input" value="0" name="dont_autoreply_lists"> {{ lang.edit.vacation_dont_autoreply_lists }}</label>
+                  </div>
+                </div>
+              </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
