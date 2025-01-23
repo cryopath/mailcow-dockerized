@@ -297,19 +297,19 @@
               <div class="row mb-4">
                 <label class="control-label col-sm-2" for="vacation_active">{{ lang.edit.vacation_active }}</label>
                 <div class="col-sm-10">
-                  <input type="checkbox" class="form-check" name="vacation_active" value="{{ result.vacation_active }}">
+                  <input type="checkbox" class="form-check" name="active" value="{{ result.vacation_active }}">
                 </div>
               </div>
               <div class="row mb-2">
-                <label class="control-label col-sm-2" for="vacation_customsubject_active">{{ lang.edit.vacation_customsubject_active }}</label>
+                <label class="control-label col-sm-2" for="customsubject_active">{{ lang.edit.vacation_customsubject_active }}</label>
                 <div class="col-sm-10">
-                  <input type="checkbox" class="form-check" name="vacation_active" value="{{ result.vacation_customsubject_active }}">
+                  <input type="checkbox" class="form-check" name="customsubject_active" value="{{ result.vacation_customsubject_active }}">
                 </div>
               </div>
               <div class="row mb-2">
                 <label class="control-label col-sm-2" for="customsubject">{{ lang.edit.vacation_customsubject }}</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="name" value="{{ result.customsubject }}">
+                  <input type="text" class="form-control" name="customsubject" value="{{ result.customsubject }}">
                   <p class="text-muted"><small>{{ lang.edit.vacation_customsubject_info }}</small></p>
                 </div>
               </div>
@@ -320,9 +320,9 @@
                 </div>
               </div>
               <div class="row">
-                <label class="control-label col-sm-2" for="vacation_repeat_delay">{{ lang.edit.vacation_repeat_delay }}</label>
+                <label class="control-label col-sm-2" for="repeat_delay">{{ lang.edit.vacation_repeat_delay }}</label>
                 <div class="offset-sm-2 col-sm-10">
-                  <select name="active" class="form-control">
+                  <select name="repeat_delay" class="form-control">
                     <option value="1"{% if result.active == '1' %} selected{% endif %}>{{ lang.constants.one }}</option>
                     <option value="2"{% if result.active == '2' %} selected{% endif %}>{{ lang.constants.two }}</option>
                     <option value="3"{% if result.active == '3' %} selected{% endif %}>{{ lang.constants.three }}</option>
@@ -338,9 +338,9 @@
 
 
               <div class="row mb-2">
-                <label class="control-label col-sm-2" for="sender_acl">{{ lang.edit.vacation_reply_for }}</label>
+                <label class="control-label col-sm-2" for="reply_for">{{ lang.edit.vacation_reply_for }}</label>
                 <div class="col-sm-10">
-                  <select data-live-search="true" data-width="100%" style="width:100%" id="vacation_reply_for" name="vacation_reply_for" size="10" multiple>
+                  <select data-live-search="true" data-width="100%" style="width:100%" id="reply_for" name="reply_for" size="10" multiple>
                     {% for alias in sender_acl_handles.sender_acl_addresses.ro %}
                       <option data-subtext="Admin" disabled selected>
                         {{ alias }}
@@ -368,7 +368,7 @@
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_discard_incoming"> {{ lang.edit.vacation_discard_incoming }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="discard_incoming"> {{ lang.edit.vacation_discard_incoming }}</label>
                   </div>
                 </div>
               </div>
@@ -376,26 +376,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginday_active"> {{ lang.edit.vacation_beginday_active }}
+                      <input type="checkbox" class="form-check-input" value="0" name="beginday_active"> {{ lang.edit.vacation_beginday_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="date" class="form" value="0" name="autoreply_beginday">
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="offset-sm-2 col-sm-10">
-                  <div class="form-check">
-                    <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endday_active"> {{ lang.edit.vacation_endday_active }}
-                    </label>
-                  </div>
-                  <div class="form">
-                    <label>
-                      <input type="date" class="form" value="0" name="autoreply_endday">
+                      <input type="date" class="form" value="0" name="beginday">
                     </label>
                   </div>
                 </div>
@@ -404,12 +390,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_beginhour_active"> {{ lang.edit.vacation_beginhour_active }}
+                      <input type="checkbox" class="form-check-input" value="0" name="endday_active"> {{ lang.edit.vacation_endday_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="time" class="form" name="autoreply_beginhour">
+                      <input type="date" class="form" value="0" name="endday">
                     </label>
                   </div>
                 </div>
@@ -418,12 +404,26 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" value="0" name="autoreply_endhour_active"> {{ lang.edit.vacation_endhour_active }}
+                      <input type="checkbox" class="form-check-input" value="0" name="beginhour_active"> {{ lang.edit.vacation_beginhour_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="time" class="form" name="autoreply_endhour">
+                      <input type="time" class="form" name="beginhour">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="offset-sm-2 col-sm-10">
+                  <div class="form-check">
+                    <label>
+                      <input type="checkbox" class="form-check-input" value="0" name="endhour_active"> {{ lang.edit.vacation_endhour_active }}
+                    </label>
+                  </div>
+                  <div class="form">
+                    <label>
+                      <input type="time" class="form" name="endhour">
                     </label>
                   </div>
                 </div>
@@ -432,56 +432,56 @@
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_weekdays_active"> {{ lang.edit.vacation_weekdays_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="weekdays_active"> {{ lang.edit.vacation_weekdays_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_monday_active"> {{ lang.edit.vacation_monday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="monday_active"> {{ lang.edit.vacation_monday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_tuesday_active"> {{ lang.edit.vacation_tuesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="tuesday_active"> {{ lang.edit.vacation_tuesday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_wednesday_active"> {{ lang.edit.vacation_wednesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="wednesday_active"> {{ lang.edit.vacation_wednesday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_thursdays_active"> {{ lang.edit.vacation_thursday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="thursdays_active"> {{ lang.edit.vacation_thursday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_friday_active"> {{ lang.edit.vacation_friday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="friday_active"> {{ lang.edit.vacation_friday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_saturday_active"> {{ lang.edit.vacation_saturday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="saturday_active"> {{ lang.edit.vacation_saturday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" value="0" name="autoreply_sunday_active"> {{ lang.edit.vacation_sunday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" value="0" name="sunday_active"> {{ lang.edit.vacation_sunday_active }}</label>
                   </div>
                 </div>
               </div>
