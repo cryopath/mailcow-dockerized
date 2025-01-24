@@ -1701,8 +1701,13 @@ if (isset($_GET['query'])) {
           case "vacation":
             switch ($object) {
               default:
-                $data = vacation('get', null);
-                process_get_return($data);
+                //$data = vacation('get', 'resource', $attr);
+                //process_get_return($data);
+                http_response_code(200);
+                echo json_encode(array(
+                  'type' => 'error',
+                  'msg' => 'route not found'
+                ));
                 break;
             }
         // return no route found if no case is matched
@@ -2082,7 +2087,13 @@ if (isset($_GET['query'])) {
           process_edit_return(reset_password('edit_notification', $attr));
         break;
         case "vacation":
-          process_edit_return(vacation('edit', array_merge(array('id' => $items), $attr)));
+          //process_edit_return(vacation('edit', array_merge(array('id' => $items), $attr)));
+          http_response_code(200);
+          echo json_encode(array(
+            'type' => 'error',
+            'msg' => 'route not found'
+          ));
+          exit();
         // return no route found if no case is matched
         default:
           http_response_code(404);
