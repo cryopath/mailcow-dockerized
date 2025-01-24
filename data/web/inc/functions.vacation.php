@@ -1,6 +1,6 @@
 <?php
 function vacation($_action, $_data = null) {
-  global $pdo;
+/*  global $pdo;
   global $lang;
   $_data_log = $_data;
   switch ($_action) {
@@ -11,5 +11,5 @@ function vacation($_action, $_data = null) {
       $_data = null;
       return false;
   }
-  return false;
+  return false; */
 }
