@@ -1,5 +1,5 @@
 <?php
-function vacation($_action, $_data = null) {
+//function vacation($_action, $_data = null) {
 /*  global $pdo;
   global $lang;
   $_data_log = $_data;
@@ -18,4 +18,4 @@ function vacation($_action, $_data = null) {
 
 
 
-}
+//}
