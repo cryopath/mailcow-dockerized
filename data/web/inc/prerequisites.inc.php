@@ -292,7 +292,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.ratelimit.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.rspamd.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.tls_policy_maps.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.transports.inc.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.vacation.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.transports.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/init_db.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/triggers.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/inc/twig.inc.php';
