@@ -5,10 +5,11 @@ function vacation($_action, $_data = null) {
   $_data_log = $_data;
   switch ($_action) {
     case 'edit':
-      return array('lol' => 'edit');
+      return false;
 
     case 'get':
       $_data = null;
-      return array('lol' => 'get');
+      return false;
   }
+  return false;
 }
