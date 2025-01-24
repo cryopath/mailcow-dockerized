@@ -1701,13 +1701,8 @@ if (isset($_GET['query'])) {
           case "vacation":
             switch ($object) {
               default:
-                //$data = vacation('get', 'resource', $attr);
-                //process_get_return($data);
-                http_response_code(200);
-                echo json_encode(array(
-                  'type' => 'error',
-                  'msg' => 'route not found'
-                ));
+                $data = vacation('get', $attr);
+                process_get_return($data);
                 break;
             }
         // return no route found if no case is matched
