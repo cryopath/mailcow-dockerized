@@ -2082,7 +2082,7 @@ if (isset($_GET['query'])) {
           process_edit_return(reset_password('edit_notification', $attr));
         break;
         case "vacation":
-          process_edit_return(vacation('edit', array_merge(array('id' => $items), $attr)));
+          process_edit_return(vacation('edit',  $attr, $items));
           break;
         // return no route found if no case is matched
         default:
