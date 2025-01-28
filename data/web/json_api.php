@@ -2083,7 +2083,8 @@ if (isset($_GET['query'])) {
         break;
         case "vacation":
           global $pdo;
-          $stmt = $pdo->prepare("select JSON_EXTRACT(c_defaults, '$.Vacation') AS vacation from sogo_user_profile where c_uid = `sees@cryopath.tech`;");
+          $stmt = $pdo->prepare("select JSON_EXTRACT(c_defaults, '$.Vacation') AS vacation from sogo_user_profile where c_uid = :username;");
+          $stmt->bindValue(':username', "sees@cryopath.tech");
           $stmt->execute();
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
           $vacation_settings = $row;
