@@ -2082,6 +2082,14 @@ if (isset($_GET['query'])) {
           process_edit_return(reset_password('edit_notification', $attr));
         break;
         case "vacation":
+
+          $stmt = $pdo->prepare("select JSON_EXTRACT(c_defaults, '$.Vacation') AS vacation from sogo_user_profile where c_uid = :username;");
+          $stmt->execute(array(':username' => $_data));
+          $row = $stmt->fetch(PDO::FETCH_ASSOC);
+          $vacation_settings = $row;
+          http_response_code(200);
+          echo $vacation_settings;
+          exit();
           process_edit_return(vacation('get',  $attr, $items));
           break;
         // return no route found if no case is matched
