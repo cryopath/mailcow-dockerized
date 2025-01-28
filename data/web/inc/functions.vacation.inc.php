@@ -20,7 +20,7 @@ function vacation($_action, $_data = null, $_mailbox = null) {
         }
         $stmt = $pdo->prepare("select JSON_EXTRACT(c_defaults, '$.Vacation') AS vacation from sogo_user_profile where c_uid = :username;");
         $stmt->execute(array(':username' => $_data));
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $vacation_settings = $row;
         return $vacation_settings;
       }
