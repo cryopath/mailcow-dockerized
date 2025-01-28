@@ -2082,6 +2082,12 @@ if (isset($_GET['query'])) {
           process_edit_return(reset_password('edit_notification', $attr));
         break;
         case "vacation":
+          http_response_code(200);
+          echo json_encode(array(
+            'type' => 'lol',
+            'msg' => 'soos'
+          ));
+          exit();
           process_edit_return(vacation('get',  $attr, $items));
           break;
         // return no route found if no case is matched
