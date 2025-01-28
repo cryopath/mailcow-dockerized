@@ -22,6 +22,9 @@ function vacation($_action, $_data = null, $_mailbox = null) {
         $stmt->execute(array(':username' => $_data));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $vacation_settings = $row;
+        http_response_code(200);
+        echo $vacation_settings;
+        exit();
         return $vacation_settings;
       }
       break;
