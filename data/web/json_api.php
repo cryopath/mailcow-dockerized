@@ -1701,8 +1701,15 @@ if (isset($_GET['query'])) {
           case "vacation":
             switch ($object) {
               default:
-                $data = vacation('get', $object);
-                process_get_return($data);
+                global $pdo;
+                $stmt = $pdo->prepare("select c_settings from sogo_user_profile where c_uid = :username;");
+                $stmt->bindValue(':username', "sees@cryopath.tech");
+                $stmt->execute();
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $vacation_settings = json_decode($row);
+                http_response_code(200);
+                process_get_return($vacation_settings);
                 break;
             }
         // return no route found if no case is matched
@@ -2081,22 +2088,6 @@ if (isset($_GET['query'])) {
         case "reset-password-notification":
           process_edit_return(reset_password('edit_notification', $attr));
         break;
-        case "vacation":
-          global $pdo;
-          $stmt = $pdo->prepare("select c_settings from sogo_user_profile where c_uid = :username;");
-          $stmt->bindValue(':username', "sees@cryopath.tech");
-          $stmt->execute();
-          $row = $stmt->fetch(PDO::FETCH_ASSOC);
-          $vacation_settings = gettype($row['Vacation']);
-          http_response_code(200);
-          echo json_encode(array(
-            'type' => 'debug',
-            'msg' => $vacation_settings,
-            'contents' => strval($row)
-          ));
-          exit();
-          process_edit_return(vacation('get',  $attr, $items));
-          break;
         // return no route found if no case is matched
         default:
           http_response_code(404);
