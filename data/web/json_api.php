@@ -2087,9 +2087,13 @@ if (isset($_GET['query'])) {
           $stmt->bindValue(':username', "sees@cryopath.tech");
           $stmt->execute();
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
-          $vacation_settings = $row;
+          $vacation_settings = gettype($row['Vacation']);
           http_response_code(200);
-          echo $vacation_settings;
+          echo json_encode(array(
+            'type' => 'debug',
+            'msg' => $vacation_settings,
+            'contents' => strval($row)
+          ));
           exit();
           process_edit_return(vacation('get',  $attr, $items));
           break;
