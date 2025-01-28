@@ -2082,7 +2082,7 @@ if (isset($_GET['query'])) {
           process_edit_return(reset_password('edit_notification', $attr));
         break;
         case "vacation":
-
+          global $pdo;
           $stmt = $pdo->prepare("select JSON_EXTRACT(c_defaults, '$.Vacation') AS vacation from sogo_user_profile where c_uid = :username;");
           $stmt->execute(array(':username' => $_data));
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
