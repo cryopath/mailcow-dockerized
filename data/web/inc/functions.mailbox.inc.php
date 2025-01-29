@@ -3173,7 +3173,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
             }
             // Update vacation settings, but only if the user has a row in table sogo_user_profile
             $stmt = $pdo->prepare("SELECT c_defaults FROM `sogo_user_profile`
-                  WHERE EXISTS `c_uid` = :username");
+                  WHERE `c_uid` = :username");
             $stmt->execute(array(
                   ':username' => $username
             ));
