@@ -294,7 +294,6 @@
           </div>
           <div id="collapse-tab-mvacation" class="card-body collapse" data-bs-parent="#mailbox-content">
             <form class="form-horizontal" data-id="vacation" role="form" method="post">
-              <input type="hidden" value="default" name="sender_acl">
               <input type="hidden" value="0" name="vacation.enabled">
               <input type="hidden" value="0" name="vacation.customSubjectEnabled">
               <input type="hidden" value="0" name="vacation.ignoreLists">
@@ -349,30 +348,6 @@
                     <option value="14"{% if result.vacation.daysBetweenResponse == '14' %} selected{% endif %}>{{ lang.constants.fourteen }}</option>
                     <option value="21"{% if result.vacation.daysBetweenResponse == '21' %} selected{% endif %}>{{ lang.constants.twentyone }}</option>
                     <option value="30"{% if result.vacation.daysBetweenResponse == '30' %} selected{% endif %}>{{ lang.constants.thirty }}</option>
-                  </select>
-                </div>
-              </div>
-
-
-
-              <div class="row mb-2">
-                <label class="control-label col-sm-2" for="vacation.autoReplyEmailAddresses">{{ lang.edit.vacation_reply_for }}</label>
-                <div class="col-sm-10">
-                  <select data-live-search="true" data-width="100%" style="width:100%" id="reply_for" name="vacation.autoReplyEmailAddresses" size="10" multiple>
-                    {% for alias in sender_acl_handles.sender_acl_addresses.ro %}
-                      <option data-subtext="Admin" disabled selected>
-                        {{ alias }}
-                      </option>
-                    {% endfor %}
-                    {% for alias in sender_acl_handles.fixed_sender_aliases %}
-                      <option data-subtext="Alias" disabled selected>{{ alias }}</option>
-                    {% endfor %}
-                    {% for address in sender_acl_handles.sender_acl_addresses.rw %}
-                      <option selected>{{ address }}</option>
-                    {% endfor %}
-                    {% for address in sender_acl_handles.sender_acl_addresses.selectable %}
-                      <option>{{ address }}</option>
-                    {% endfor %}
                   </select>
                 </div>
               </div>
