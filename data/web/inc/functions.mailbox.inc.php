@@ -3184,7 +3184,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                   `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', :vacation)
                     WHERE `c_uid` = :username");
               $stmt->execute(array(
-                ':vacation' => json_encode($vacation),
+                ':vacation' => json_encode($vacation, JSON_FORCE_OBJECT),
                 ':username' => $username
               ));
             }
