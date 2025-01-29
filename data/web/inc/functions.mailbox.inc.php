@@ -3172,7 +3172,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               return false;
             }
             // Update vacation settings, but only if the user has a row in table sogo_user_profile
-            $stmt = $pdo->prepare("SELECT c_defaults FROM `sogo_user_profile`
+            $stmt = $pdo->prepare("SELECT `c_defaults` FROM `sogo_user_profile`
                   WHERE `c_uid` = :username");
             $stmt->execute(array(
                   ':username' => $username
@@ -3187,25 +3187,25 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                 ));
                 $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
                     `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.customSubject', :customSubject),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.weekdaysEnabled', :weekdaysEnabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.discardMails', :discardMails),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.ignoreLists', :ignoreLists),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endDate', :endDate),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTime', :startTime),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTimeEnabled', :endTimeEnabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.alwaysSend', :alwaysSend),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTime', :endTime),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDateEnabled', :startDateEnabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDate', :startDate),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTimeEnabled', :startTimeEnabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.daysBetweenResponse', :daysBetweenResponse),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.customSubjectEnabled', :customSubjectEnabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.enabled', :enabled),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.days', :days),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyEmailAddresses', :autoReplyEmailAddresses),
-                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyText', :autoReplyText),
-                        )
-                      WHERE `c_uid` = :username");
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.weekdaysEnabled', :weekdaysEnabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.discardMails', :discardMails),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.ignoreLists', :ignoreLists),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endDate', :endDate),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTime', :startTime),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTimeEnabled', :endTimeEnabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.alwaysSend', :alwaysSend),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTime', :endTime),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDateEnabled', :startDateEnabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDate', :startDate),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTimeEnabled', :startTimeEnabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.daysBetweenResponse', :daysBetweenResponse),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.customSubjectEnabled', :customSubjectEnabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.enabled', :enabled),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.days', :days),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyEmailAddresses', :autoReplyEmailAddresses),
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyText', :autoReplyText),
+                    )
+                    WHERE `c_uid` = :username");
                 $stmt->execute(array(
                   ':username' => $vacation['username'],
                   ':customSubject' => $vacation['customSubject'],
