@@ -3177,7 +3177,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
             $stmt->execute(array(
                   ':username' => $username
             ));
-            if($stmt->rowCount() == 1) {
+            if($stmt->rowCount() != 0) {
               try {
                 $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
                     `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', JSON_OBJECT())
