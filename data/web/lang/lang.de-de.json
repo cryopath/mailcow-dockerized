@@ -359,7 +359,16 @@
         "allowed_methods": "Access-Control-Allow-Methods",
         "allowed_origins": "Access-Control-Allow-Origin",
         "logo_dark_label": "Invertiert für den Darkmode",
-        "logo_normal_label": "Normal"
+        "logo_normal_label": "Normal",
+    "constants": {
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "five": "5",
+        "seven": "7",
+        "fourteen": "14",
+        "twentyone": "21",
+        "thirty": "30"
     },
     "danger": {
         "access_denied": "Zugriff verweigert oder unvollständige/ungültige Daten",
@@ -707,6 +716,11 @@
         "title": "Objekt bearbeiten",
         "unchanged_if_empty": "Unverändert, wenn leer",
         "username": "Benutzername",
+        "vacation": "Urlaubsmitteilungen",
+        "vacation_customsubject": "Eigener Betreff",
+        "vacation_repeat_delay": "Wartezeit bis neue Urlaubsmitteilung",
+        "vacation_repeat_delay_info": "urlaub wiederhol verzöger info",
+        "vacation_replytext": "Antworttext",
         "validate_save": "Validieren und speichern",
         "pushover_sound": "Ton"
     },
