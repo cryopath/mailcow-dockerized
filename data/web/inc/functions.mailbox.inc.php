@@ -3203,8 +3203,8 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                     `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.enabled', :enabled),
                     `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.days', :days),
                     `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyEmailAddresses', :autoReplyEmailAddresses),
-                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyText', :autoReplyText),
-                    )
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyText', :autoReplyText)
+
                     WHERE `c_uid` = :username");
                 $stmt->execute(array(
                   ':username' => $vacation['username'],
