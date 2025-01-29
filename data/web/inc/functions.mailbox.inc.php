@@ -2888,6 +2888,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               $password2            = (!empty($_data['password2'])) ? $_data['password2'] : null;
               $pw_recovery_email     = (isset($_data['pw_recovery_email'])) ? $_data['pw_recovery_email'] : $is_now['attributes']['recovery_email'];
               $tags                 = (is_array($_data['tags']) ? $_data['tags'] : array());
+              $vacation             = (isset($_data['vacation'])) ? $_data['vacation'] : $is_now['vacation'];
             }
             else {
               $_SESSION['return'][] = array(
@@ -3168,6 +3169,24 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                   ':relayhost' => $relayhost,
                   ':username' => $username
                 ));
+            }
+            catch (PDOException $e) {
+              $_SESSION['return'][] = array(
+                'type' => 'danger',
+                'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
+                'msg' => $e->getMessage()
+              );
+              return false;
+            }
+            // Update vacation settings
+            try {
+              $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
+                  `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', :vacation)
+                    WHERE `c_uid` = :username");
+              $stmt->execute(array(
+                ':vacation' => $vacation,
+                ':username' => $username
+              ));
             }
             catch (PDOException $e) {
               $_SESSION['return'][] = array(
@@ -4669,11 +4688,13 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               `quota2`.`bytes`,
               `attributes`,
               `custom_attributes`,
-              `quota2`.`messages`
-                FROM `mailbox`, `quota2`, `domain`
+              `quota2`.`messages`,
+              `sogo_user_profile`.`c_defaults`
+                FROM `mailbox`, `quota2`, `domain`, `sogo_user_profile`
                   WHERE (`mailbox`.`kind` = '' OR `mailbox`.`kind` = NULL)
                     AND `mailbox`.`username` = `quota2`.`username`
                     AND `domain`.`domain` = `mailbox`.`domain`
+                    AND `sogo_user_profile`.`c_uid` = `mailbox`.`username`
                     AND `mailbox`.`username` = :mailbox");
           }
           else {
@@ -4690,11 +4711,13 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               `quota2replica`.`bytes`,
               `attributes`,
               `custom_attributes`,
-              `quota2replica`.`messages`
-                FROM `mailbox`, `quota2replica`, `domain`
+              `quota2replica`.`messages`,
+              `sogo_user_profile`.`c_defaults`
+                FROM `mailbox`, `quota2replica`, `domain`, `sogo_user_profile`
                   WHERE (`mailbox`.`kind` = '' OR `mailbox`.`kind` = NULL)
                     AND `mailbox`.`username` = `quota2replica`.`username`
                     AND `domain`.`domain` = `mailbox`.`domain`
+                    AND `sogo_user_profile`.`c_uid` = `mailbox`.`username`
                     AND `mailbox`.`username` = :mailbox");
           }
           $stmt->execute(array(
@@ -4716,6 +4739,11 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
           $mailboxdata['percent_in_use'] = ($row['quota'] == 0) ? '- ' : round((intval($row['bytes']) / intval($row['quota'])) * 100);
           $mailboxdata['created'] = $row['created'];
           $mailboxdata['modified'] = $row['modified'];
+
+          // Handle nested json of vacation settings
+          $mailboxdata['vacation'] = (
+            json_decode($row['c_defaults'], true)['Vacation']
+          );
 
           if ($mailboxdata['percent_in_use'] === '- ') {
             $mailboxdata['percent_class'] = "info";
