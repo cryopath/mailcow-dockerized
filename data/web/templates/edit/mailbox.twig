@@ -296,14 +296,14 @@
             <form class="form-horizontal" data-id="vacation" role="form" method="post">
               <input type="hidden" value="default" name="sender_acl">
               <input type="hidden" value="0" name="vacation.enabled">
-              <input type="hidden" value="0" name="customSubjectEnabled">
-              <input type="hidden" value="0" name="ignoreLists">
-              <input type="hidden" value="0" name="discardMails">
-              <input type="hidden" value="0" name="startDateEnabled">
-              <input type="hidden" value="0" name="endDateEnabled">
-              <input type="hidden" value="0" name="startTimeEnabled">
-              <input type="hidden" value="0" name="endTimeEnabled">
-              <input type="hidden" value="0" name="weekdaysEnabled">
+              <input type="hidden" value="0" name="vacation.customSubjectEnabled">
+              <input type="hidden" value="0" name="vacation.ignoreLists">
+              <input type="hidden" value="0" name="vacation.discardMails">
+              <input type="hidden" value="0" name="vacation.startDateEnabled">
+              <input type="hidden" value="0" name="vacation.endDateEnabled">
+              <input type="hidden" value="0" name="vacation.startTimeEnabled">
+              <input type="hidden" value="0" name="vacation.endTimeEnabled">
+              <input type="hidden" value="0" name="vacation.weekdaysEnabled">
               <input type="hidden" value="0" name="monday_active">
               <input type="hidden" value="0" name="tuesday_active">
               <input type="hidden" value="0" name="wednesday_active">
@@ -319,9 +319,9 @@
                 </div>
               </div>
               <div class="row mb-2">
-                <label class="control-label col-sm-2" for="customSubjectEnabled">{{ lang.edit.vacation_customsubject_active }}</label>
+                <label class="control-label col-sm-2" for="vacation.customSubjectEnabled">{{ lang.edit.vacation_customsubject_active }}</label>
                 <div class="col-sm-10">
-                  <input type="checkbox" class="form-check" name="customSubjectEnabled" value="1" {% if result.customSubjectEnabled == '1' %} checked{% endif %}>
+                  <input type="checkbox" class="form-check" name="vacation.customSubjectEnabled" value="1" {% if result.vacation.customSubjectEnabled == '1' %} checked{% endif %}>
                 </div>
               </div>
               <div class="row mb-2">
@@ -332,23 +332,23 @@
                 </div>
               </div>
               <div class="row mb-2">
-                <label class="control-label col-sm-2" for="replytext">{{ lang.edit.vacation_replytext }}</label>
+                <label class="control-label col-sm-2" for="vacation.autoReplyText">{{ lang.edit.vacation_replytext }}</label>
                 <div class="form-group offset-sm-2 col-sm-10">
-                  <textarea class="form-control" rows="5" name="replytext">{{ result.vacation_replytext }}</textarea>
+                  <textarea class="form-control" rows="5" name="vacation.autoReplyText">{{ result.vacation.autoReplyText }}</textarea>
                 </div>
               </div>
               <div class="row">
-                <label class="control-label col-sm-2" for="repeat_delay">{{ lang.edit.vacation_repeat_delay }}</label>
+                <label class="control-label col-sm-2" for="vacation.daysBetweenResponse">{{ lang.edit.vacation_repeat_delay }}</label>
                 <div class="offset-sm-2 col-sm-10">
-                  <select name="repeat_delay" class="form-control">
-                    <option value="1"{% if result.active == '1' %} selected{% endif %}>{{ lang.constants.one }}</option>
-                    <option value="2"{% if result.active == '2' %} selected{% endif %}>{{ lang.constants.two }}</option>
-                    <option value="3"{% if result.active == '3' %} selected{% endif %}>{{ lang.constants.three }}</option>
-                    <option value="5"{% if result.active == '5' %} selected{% endif %}>{{ lang.constants.five }}</option>
-                    <option value="7"{% if result.active == '7' %} selected{% endif %}>{{ lang.constants.seven }}</option>
-                    <option value="14"{% if result.active == '14' %} selected{% endif %}>{{ lang.constants.fourteen }}</option>
-                    <option value="21"{% if result.active == '21' %} selected{% endif %}>{{ lang.constants.twentyone }}</option>
-                    <option value="30"{% if result.active == '30' %} selected{% endif %}>{{ lang.constants.thirty }}</option>
+                  <select name="vacation.daysBetweenResponse" class="form-control">
+                    <option value="1"{% if result.vacation.daysBetweenResponse == '1' %} selected{% endif %}>{{ lang.constants.one }}</option>
+                    <option value="2"{% if result.vacation.daysBetweenResponse == '2' %} selected{% endif %}>{{ lang.constants.two }}</option>
+                    <option value="3"{% if result.vacation.daysBetweenResponse == '3' %} selected{% endif %}>{{ lang.constants.three }}</option>
+                    <option value="5"{% if result.vacation.daysBetweenResponse == '5' %} selected{% endif %}>{{ lang.constants.five }}</option>
+                    <option value="7"{% if result.vacation.daysBetweenResponse == '7' %} selected{% endif %}>{{ lang.constants.seven }}</option>
+                    <option value="14"{% if result.vacation.daysBetweenResponse == '14' %} selected{% endif %}>{{ lang.constants.fourteen }}</option>
+                    <option value="21"{% if result.vacation.daysBetweenResponse == '21' %} selected{% endif %}>{{ lang.constants.twentyone }}</option>
+                    <option value="30"{% if result.vacation.daysBetweenResponse == '30' %} selected{% endif %}>{{ lang.constants.thirty }}</option>
                   </select>
                 </div>
               </div>
@@ -356,9 +356,9 @@
 
 
               <div class="row mb-2">
-                <label class="control-label col-sm-2" for="reply_for">{{ lang.edit.vacation_reply_for }}</label>
+                <label class="control-label col-sm-2" for="vacation.autoReplyEmailAddresses">{{ lang.edit.vacation_reply_for }}</label>
                 <div class="col-sm-10">
-                  <select data-live-search="true" data-width="100%" style="width:100%" id="reply_for" name="reply_for" size="10" multiple>
+                  <select data-live-search="true" data-width="100%" style="width:100%" id="reply_for" name="vacation.autoReplyEmailAddresses" size="10" multiple>
                     {% for alias in sender_acl_handles.sender_acl_addresses.ro %}
                       <option data-subtext="Admin" disabled selected>
                         {{ alias }}
@@ -379,14 +379,14 @@
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="dont_autoreply_lists" value="1" {% if result.dont_autoreply_lists == '1' %} checked{% endif %}> {{ lang.edit.vacation_dont_autoreply_lists }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.ignoreLists" value="1" {% if result.vacation.ignoreLists == '1' %} checked{% endif %}> {{ lang.edit.vacation_dont_autoreply_lists }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="discard_incoming" value="1" {% if result.discard_incoming == '1' %} checked{% endif %}> {{ lang.edit.vacation_discard_incoming }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.discardMails" value="1" {% if result.vacation.discardMails == '1' %} checked{% endif %}> {{ lang.edit.vacation_discard_incoming }}</label>
                   </div>
                 </div>
               </div>
@@ -394,12 +394,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" name="beginday_active" value="1" {% if result.beginday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_beginday_active }}
+                      <input type="checkbox" class="form-check-input" name="vacation.startDateEnabled" value="1" {% if result.vacation.startDateEnabled == '1' %} checked{% endif %}> {{ lang.edit.vacation_beginday_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="date" class="form" value="0" name="beginday">
+                      <input type="date" class="form" value="0" name="vacation.startDateEnabled">
                     </label>
                   </div>
                 </div>
