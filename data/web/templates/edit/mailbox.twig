@@ -302,14 +302,7 @@
               <input type="hidden" value="0" name="vacation.endDateEnabled">
               <input type="hidden" value="0" name="vacation.startTimeEnabled">
               <input type="hidden" value="0" name="vacation.endTimeEnabled">
-              <input type="hidden" value="0" name="vacation.weekdaysEnabled">
-              <input type="hidden" value="0" name="monday_active">
-              <input type="hidden" value="0" name="tuesday_active">
-              <input type="hidden" value="0" name="wednesday_active">
-              <input type="hidden" value="0" name="thursday_active">
-              <input type="hidden" value="0" name="friday_active">
-              <input type="hidden" value="0" name="saturday_active">
-              <input type="hidden" value="0" name="sunday_active">
+
               <--!TODO: Prefill all vars hidden -->
               <div class="row mb-4">
                 <label class="control-label col-sm-2" for="vacation.enabled">{{ lang.edit.vacation_active }}</label>
@@ -334,6 +327,13 @@
                 <label class="control-label col-sm-2" for="vacation.autoReplyText">{{ lang.edit.vacation_replytext }}</label>
                 <div class="form-group offset-sm-2 col-sm-10">
                   <textarea class="form-control" rows="5" name="vacation.autoReplyText">{{ result.vacation.autoReplyText }}</textarea>
+                </div>
+              </div>
+              <div class="row mb-2" hidden>
+                <label class="control-label col-sm-2" for="autoReplyEmailAddresses">{{ lang.edit.vacation_reply_for }}</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="vacation.autoReplyEmailAddresses" placeholder="{{ lang.edit.vacation_replyfor_info }}" value="{{ result.vacation.autoReplyEmailAddresses }}">
+                  <p class="text-muted"><small>{{ lang.edit.vacation_replyfor_info }}</small></p>
                 </div>
               </div>
               <div class="row">
@@ -374,7 +374,7 @@
                   </div>
                   <div class="form">
                     <label>
-                      <input type="date" class="form" value="0" name="vacation.startDateEnabled">
+                      <input type="date" class="form" value="0" name="vacation.startDate">
                     </label>
                   </div>
                 </div>
@@ -383,12 +383,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" name="endday_active" value="1" {% if result.endday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_endday_active }}
+                      <input type="checkbox" class="form-check-input" name="vacation.endDate" value="1" {% if result.vacation.endDateEnabled == '1' %} checked{% endif %}> {{ lang.edit.vacation_endday_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="date" class="form" value="0" name="endday">
+                      <input type="date" class="form" value="0" name="vacation.endDate">
                     </label>
                   </div>
                 </div>
@@ -397,12 +397,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" name="beginhour_active" value="1" {% if result.beginhour_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_beginhour_active }}
+                      <input type="checkbox" class="form-check-input" name="vacation.startTimeEnabled" value="1" {% if result.vacation.startTimeEnabled == '1' %} checked{% endif %}> {{ lang.edit.vacation_beginhour_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="time" class="form" name="beginhour">
+                      <input type="time" class="form" name="vacation.startTime">
                     </label>
                   </div>
                 </div>
@@ -411,12 +411,12 @@
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" class="form-check-input" name="endhour_active" value="1" {% if result.endhour_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_endhour_active }}
+                      <input type="checkbox" class="form-check-input" name="vacation.endTimeEnabled" value="1" {% if result.vacation.endTimeEnabled == '1' %} checked{% endif %}> {{ lang.edit.vacation_endhour_active }}
                     </label>
                   </div>
                   <div class="form">
                     <label>
-                      <input type="time" class="form" name="endhour">
+                      <input type="time" class="form" name="vacation.endTime">
                     </label>
                   </div>
                 </div>
@@ -425,56 +425,56 @@
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="weekdays_active" value="1" {% if result.weekdays_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_weekdays_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.weekdaysEnabled" value="1" {% if result.vacation.weekdaysEnabled == '1' %} checked{% endif %}> {{ lang.edit.vacation_weekdays_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="monday_active" value="1" {% if result.monday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_monday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.monday_active" value="1" {% if result.vacation.monday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_monday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="tuesday_active" value="1" {% if result.tuesday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_tuesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.tuesday_active" value="1" {% if result.vacation.tuesday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_tuesday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="wednesday_active" value="1" {% if result.wednesday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_wednesday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.wednesday_active" value="1" {% if result.vacation.wednesday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_wednesday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="thursday_active" value="1" {% if result.dont_authursday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_thursday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.thursday_active" value="1" {% if result.vacation.dont_authursday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_thursday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="friday_active" value="1" {% if result.friday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_friday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.friday_active" value="1" {% if result.vacation.friday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_friday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="saturday_active" value="1" {% if result.saturday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_saturday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.saturday_active" value="1" {% if result.vacation.saturday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_saturday_active }}</label>
                   </div>
                 </div>
               </div>
               <div class="row mt-2">
                 <div class="offset-sm-2 col-sm-10">
                   <div class="form-check">
-                    <label><input type="checkbox" class="form-check-input" name="sunday_active" value="1" {% if result.sunday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_sunday_active }}</label>
+                    <label><input type="checkbox" class="form-check-input" name="vacation.sunday_active" value="1" {% if result.vacation.sunday_active == '1' %} checked{% endif %}> {{ lang.edit.vacation_sunday_active }}</label>
                   </div>
                 </div>
               </div>

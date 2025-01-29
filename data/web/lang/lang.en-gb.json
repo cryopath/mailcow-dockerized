@@ -726,6 +726,7 @@
         "vacation_dont_autoreply_lists": "Do not reply to mailing lists",
         "vacation_repeat_delay": "Do not autoreply for {n} days",
         "vacation_reply_for": "Reply for:",
+        "vacation_reply_for_info": "['user@host.stuff', 'alias@host.stuff']",
         "vacation_discard_incoming": "Discard incoming messages during vacation",
         "vacation_beginday_active": "Begins on day:",
         "vacation_endday_active": "Ends on day:",
