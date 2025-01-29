@@ -3181,12 +3181,13 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
             // Update vacation settings
             try {
               $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
-                  `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', :vacation)
+                  `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', JSON_OBJECT())
                     WHERE `c_uid` = :username");
               $stmt->execute(array(
-                ':vacation' => json_encode($vacation, JSON_FORCE_OBJECT),
+                ':vacation' => $vacation[''],
                 ':username' => $username
               ));
+
             }
             catch (PDOException $e) {
               $_SESSION['return'][] = array(
