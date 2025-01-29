@@ -2872,25 +2872,24 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               $_data['sieve_access'] = (in_array('sieve', $_data['protocol_access'])) ? 1 : 0;
             }
             if (!empty($is_now)) {
-              $active               = (isset($_data['active'])) ? intval($_data['active']) : $is_now['active'];
+              $active = (isset($_data['active'])) ? intval($_data['active']) : $is_now['active'];
               (int)$force_pw_update = (isset($_data['force_pw_update'])) ? intval($_data['force_pw_update']) : intval($is_now['attributes']['force_pw_update']);
-              (int)$sogo_access     = (isset($_data['sogo_access']) && isset($_SESSION['acl']['sogo_access']) && $_SESSION['acl']['sogo_access'] == "1") ? intval($_data['sogo_access']) : intval($is_now['attributes']['sogo_access']);
-              (int)$imap_access     = (isset($_data['imap_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['imap_access']) : intval($is_now['attributes']['imap_access']);
-              (int)$pop3_access     = (isset($_data['pop3_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['pop3_access']) : intval($is_now['attributes']['pop3_access']);
-              (int)$smtp_access     = (isset($_data['smtp_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['smtp_access']) : intval($is_now['attributes']['smtp_access']);
-              (int)$sieve_access    = (isset($_data['sieve_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['sieve_access']) : intval($is_now['attributes']['sieve_access']);
-              (int)$relayhost       = (isset($_data['relayhost']) && isset($_SESSION['acl']['mailbox_relayhost']) && $_SESSION['acl']['mailbox_relayhost'] == "1") ? intval($_data['relayhost']) : intval($is_now['attributes']['relayhost']);
-              (int)$quota_m         = (isset_has_content($_data['quota'])) ? intval($_data['quota']) : ($is_now['quota'] / 1048576);
-              $name                 = (!empty($_data['name'])) ? ltrim(rtrim($_data['name'], '>'), '<') : $is_now['name'];
-              $domain               = $is_now['domain'];
-              $quota_b              = $quota_m * 1048576;
-              $password             = (!empty($_data['password'])) ? $_data['password'] : null;
-              $password2            = (!empty($_data['password2'])) ? $_data['password2'] : null;
-              $pw_recovery_email     = (isset($_data['pw_recovery_email'])) ? $_data['pw_recovery_email'] : $is_now['attributes']['recovery_email'];
-              $tags                 = (is_array($_data['tags']) ? $_data['tags'] : array());
-              $vacation             = (isset($_data['vacation'])) ? $_data['vacation'] : $is_now['vacation'];
-            }
-            else {
+              (int)$sogo_access = (isset($_data['sogo_access']) && isset($_SESSION['acl']['sogo_access']) && $_SESSION['acl']['sogo_access'] == "1") ? intval($_data['sogo_access']) : intval($is_now['attributes']['sogo_access']);
+              (int)$imap_access = (isset($_data['imap_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['imap_access']) : intval($is_now['attributes']['imap_access']);
+              (int)$pop3_access = (isset($_data['pop3_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['pop3_access']) : intval($is_now['attributes']['pop3_access']);
+              (int)$smtp_access = (isset($_data['smtp_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['smtp_access']) : intval($is_now['attributes']['smtp_access']);
+              (int)$sieve_access = (isset($_data['sieve_access']) && isset($_SESSION['acl']['protocol_access']) && $_SESSION['acl']['protocol_access'] == "1") ? intval($_data['sieve_access']) : intval($is_now['attributes']['sieve_access']);
+              (int)$relayhost = (isset($_data['relayhost']) && isset($_SESSION['acl']['mailbox_relayhost']) && $_SESSION['acl']['mailbox_relayhost'] == "1") ? intval($_data['relayhost']) : intval($is_now['attributes']['relayhost']);
+              (int)$quota_m = (isset_has_content($_data['quota'])) ? intval($_data['quota']) : ($is_now['quota'] / 1048576);
+              $name = (!empty($_data['name'])) ? ltrim(rtrim($_data['name'], '>'), '<') : $is_now['name'];
+              $domain = $is_now['domain'];
+              $quota_b = $quota_m * 1048576;
+              $password = (!empty($_data['password'])) ? $_data['password'] : null;
+              $password2 = (!empty($_data['password2'])) ? $_data['password2'] : null;
+              $pw_recovery_email = (isset($_data['pw_recovery_email'])) ? $_data['pw_recovery_email'] : $is_now['attributes']['recovery_email'];
+              $tags = (is_array($_data['tags']) ? $_data['tags'] : array());
+              $vacation = (isset($_data['vacation'])) ? $_data['vacation'] : $is_now['vacation'];
+            } else {
               $_SESSION['return'][] = array(
                 'type' => 'danger',
                 'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
@@ -2934,15 +2933,14 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
             }
             $extra_acls = array();
             if (isset($_data['extended_sender_acl'])) {
-              if (!isset($_SESSION['acl']['extend_sender_acl']) || $_SESSION['acl']['extend_sender_acl'] != "1" ) {
+              if (!isset($_SESSION['acl']['extend_sender_acl']) || $_SESSION['acl']['extend_sender_acl'] != "1") {
                 $_SESSION['return'][] = array(
                   'type' => 'danger',
                   'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
                   'msg' => 'extended_sender_acl_denied'
                 );
-              }
-              else {
-                $extra_acls = array_map('trim', preg_split( "/( |,|;|\n)/", $_data['extended_sender_acl']));
+              } else {
+                $extra_acls = array_map('trim', preg_split("/( |,|;|\n)/", $_data['extended_sender_acl']));
                 foreach ($extra_acls as $i => &$extra_acl) {
                   if (empty($extra_acl)) {
                     continue;
@@ -2971,8 +2969,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                       unset($extra_acls[$i]);
                       continue;
                     }
-                  }
-                  else {
+                  } else {
                     if (in_array($extra_acl, $domains)) {
                       $_SESSION['return'][] = array(
                         'type' => 'danger',
@@ -3014,12 +3011,10 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               $_data['sender_acl'] = (array)$_data['sender_acl'];
               if (in_array("*", $_data['sender_acl'])) {
                 $sender_acl_domain_admin = array('*');
-              }
-              elseif (array("default") === $_data['sender_acl']) {
+              } elseif (array("default") === $_data['sender_acl']) {
                 $sender_acl_domain_admin = array();
-              }
-              else {
-                if (array_search('default', $_data['sender_acl']) !== false){
+              } else {
+                if (array_search('default', $_data['sender_acl']) !== false) {
                   unset($_data['sender_acl'][array_search('default', $_data['sender_acl'])]);
                 }
                 $sender_acl_domain_admin = $_data['sender_acl'];
@@ -3111,8 +3106,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                     ':username' => $username
                   ));
                 }
-              }
-              else {
+              } else {
                 $stmt = $pdo->prepare("DELETE FROM `sender_acl` WHERE `external` = 0 AND `logged_in_as` = :username");
                 $stmt->execute(array(
                   ':username' => $username
@@ -3155,46 +3149,92 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                   `attributes` = JSON_SET(`attributes`, '$.smtp_access', :smtp_access),
                   `attributes` = JSON_SET(`attributes`, '$.recovery_email', :recovery_email)
                     WHERE `username` = :username");
-                $stmt->execute(array(
-                  ':active' => $active,
-                  ':name' => $name,
-                  ':quota_b' => $quota_b,
-                  ':force_pw_update' => $force_pw_update,
-                  ':sogo_access' => $sogo_access,
-                  ':imap_access' => $imap_access,
-                  ':pop3_access' => $pop3_access,
-                  ':sieve_access' => $sieve_access,
-                  ':smtp_access' => $smtp_access,
-                  ':recovery_email' => $pw_recovery_email,
-                  ':relayhost' => $relayhost,
-                  ':username' => $username
-                ));
-            }
-            catch (PDOException $e) {
-              $_SESSION['return'][] = array(
-                'type' => 'danger',
-                'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
-                'msg' => $e->getMessage()
-              );
-              return false;
-            }
-            // Update vacation settings
-            try {
-              $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
-                  `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', JSON_OBJECT())
-                    WHERE `c_uid` = :username");
               $stmt->execute(array(
+                ':active' => $active,
+                ':name' => $name,
+                ':quota_b' => $quota_b,
+                ':force_pw_update' => $force_pw_update,
+                ':sogo_access' => $sogo_access,
+                ':imap_access' => $imap_access,
+                ':pop3_access' => $pop3_access,
+                ':sieve_access' => $sieve_access,
+                ':smtp_access' => $smtp_access,
+                ':recovery_email' => $pw_recovery_email,
+                ':relayhost' => $relayhost,
                 ':username' => $username
               ));
-
-            }
-            catch (PDOException $e) {
+            } catch (PDOException $e) {
               $_SESSION['return'][] = array(
                 'type' => 'danger',
                 'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
                 'msg' => $e->getMessage()
               );
               return false;
+            }
+            // Update vacation settings, but only if the user has a row in table sogo_user_profile
+            $stmt = $pdo->prepare("SELECT c_defaults FROM `sogo_user_profile`
+                  WHERE EXISTS `c_uid` = :username");
+            $stmt->execute(array(
+                  ':username' => $username
+            ));
+            if($stmt->rowCount() == 1) {
+              try {
+                $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation', JSON_OBJECT())
+                      WHERE `c_uid` = :username");
+                $stmt->execute(array(
+                  ':username' => $username
+                ));
+                $stmt = $pdo->prepare("UPDATE `sogo_user_profile` SET
+                    `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.customSubject', :customSubject),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.weekdaysEnabled', :weekdaysEnabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.discardMails', :discardMails),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.ignoreLists', :ignoreLists),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endDate', :endDate),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTime', :startTime),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTimeEnabled', :endTimeEnabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.alwaysSend', :alwaysSend),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.endTime', :endTime),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDateEnabled', :startDateEnabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startDate', :startDate),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.startTimeEnabled', :startTimeEnabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.daysBetweenResponse', :daysBetweenResponse),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.customSubjectEnabled', :customSubjectEnabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.enabled', :enabled),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.days', :days),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyEmailAddresses', :autoReplyEmailAddresses),
+                        `c_defaults` = JSON_SET(`c_defaults`, '$.Vacation.autoReplyText', :autoReplyText),
+                        )
+                      WHERE `c_uid` = :username");
+                $stmt->execute(array(
+                  ':username' => $vacation['username'],
+                  ':customSubject' => $vacation['customSubject'],
+                  ':weekdaysEnabled' => $vacation['weekdaysEnabled'],
+                  ':discardMails' => $vacation['discardMails'],
+                  ':ignoreLists' => $vacation['ignoreLists'],
+                  ':endDate' => $vacation['endDate'],
+                  ':startTime' => $vacation['startTime'],
+                  ':endTimeEnabled' => $vacation['endTimeEnabled'],
+                  ':alwaysSend' => $vacation['alwaysSend'],
+                  ':endTime' => $vacation['endTime'],
+                  ':startDateEnabled' => $vacation['startDateEnabled'],
+                  ':autoReplyText' => $vacation['autoReplyText'],
+                  ':startDate' => $vacation['startDate'],
+                  ':startTimeEnabled' => $vacation['startTimeEnabled'],
+                  ':daysBetweenResponse' => $vacation['daysBetweenResponse'],
+                  ':customSubjectEnabled' => $vacation['customSubjectEnabled'],
+                  ':days' => $vacation['days'],
+                  ':autoReplyEmailAddresses' => $vacation['autoReplyEmailAddresses'],
+                  ':enabled' => $vacation['enabled']
+                ));
+              } catch (PDOException $e) {
+                $_SESSION['return'][] = array(
+                  'type' => 'danger',
+                  'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
+                  'msg' => $e->getMessage()
+                );
+                return false;
+              }
             }
             // save tags
             foreach($tags as $index => $tag){
