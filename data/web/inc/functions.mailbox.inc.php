@@ -3207,7 +3207,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
 
                     WHERE `c_uid` = :username");
                 $stmt->execute(array(
-                  ':username' => $vacation['username'],
+                  ':username' => $username,
                   ':customSubject' => $vacation['customSubject'],
                   ':weekdaysEnabled' => $vacation['weekdaysEnabled'],
                   ':discardMails' => $vacation['discardMails'],
