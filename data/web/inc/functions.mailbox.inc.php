@@ -3230,7 +3230,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                 $_SESSION['return'][] = array(
                   'type' => 'danger',
                   'log' => array(__FUNCTION__, $_action, $_type, $_data_log, $_attr),
-                  'msg' => $vacation;
+                  'msg' => $vacation
                 );
                 return false;
               } catch (PDOException $e) {
