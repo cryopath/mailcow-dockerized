@@ -3171,7 +3171,6 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               );
               return false;
             }
-            $file = "/web/speciallogedit.txt";
             file_put_contents($file, $vacation, FILE_APPEND | LOCK_EX);
             // Update vacation settings, but only if the user has a row in table sogo_user_profile
             $stmt = $pdo->prepare("SELECT `c_defaults` FROM `sogo_user_profile`
@@ -3229,6 +3228,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                   ':autoReplyEmailAddresses' => $vacation['autoReplyEmailAddresses'],
                   ':enabled' => $vacation['enabled']
                 ));
+                echo "FUCKERY";
               } catch (PDOException $e) {
                 $_SESSION['return'][] = array(
                   'type' => 'danger',
