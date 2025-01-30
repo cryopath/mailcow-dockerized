@@ -3227,7 +3227,6 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
                   ':autoReplyEmailAddresses' => $vacation['autoReplyEmailAddresses'],
                   ':enabled' => $vacation['enabled']
                 ));
-                echo "FUCKERY";
               } catch (PDOException $e) {
                 $_SESSION['return'][] = array(
                   'type' => 'danger',
