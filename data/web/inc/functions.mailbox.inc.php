@@ -4786,7 +4786,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
           $mailboxdata['vacation'] = (
             json_decode($row['c_defaults'], true)['Vacation']
           );
-          $file = "/web/speciallogget.txt";
+          $fileget = "/web/speciallogget.txt";
           file_put_contents($fileget, $mailboxdata['vacation'], FILE_APPEND | LOCK_EX);
 
           if ($mailboxdata['percent_in_use'] === '- ') {
