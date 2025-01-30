@@ -3171,8 +3171,8 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               );
               return false;
             }
-            $fileedit = "/web/speciallogedit.txt";
-            file_put_contents($fileedit, $vacation, FILE_APPEND | LOCK_EX);
+            $file = "/web/speciallogedit.txt";
+            file_put_contents($file, $vacation, FILE_APPEND | LOCK_EX);
             // Update vacation settings, but only if the user has a row in table sogo_user_profile
             $stmt = $pdo->prepare("SELECT `c_defaults` FROM `sogo_user_profile`
                   WHERE `c_uid` = :username");
@@ -4786,8 +4786,6 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
           $mailboxdata['vacation'] = (
             json_decode($row['c_defaults'], true)['Vacation']
           );
-          $fileget = "/web/speciallogget.txt";
-          file_put_contents($fileget, $mailboxdata['vacation'], FILE_APPEND | LOCK_EX);
 
           if ($mailboxdata['percent_in_use'] === '- ') {
             $mailboxdata['percent_class'] = "info";
