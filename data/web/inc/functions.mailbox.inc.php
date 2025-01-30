@@ -2888,7 +2888,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
               $password2 = (!empty($_data['password2'])) ? $_data['password2'] : null;
               $pw_recovery_email = (isset($_data['pw_recovery_email'])) ? $_data['pw_recovery_email'] : $is_now['attributes']['recovery_email'];
               $tags = (is_array($_data['tags']) ? $_data['tags'] : array());
-              //$vacation = (isset($_data['vacation'])) ? $_data['vacation'] : $is_now['vacation'];
+              $vacation = (isset($_data['vacation'])) ? $_data['vacation'] : $is_now['vacation'];
             } else {
               $_SESSION['return'][] = array(
                 'type' => 'danger',
