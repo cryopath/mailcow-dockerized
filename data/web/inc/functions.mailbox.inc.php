@@ -4782,7 +4782,7 @@ function mailbox($_action, $_type, $_data = null, $_extra = null) {
 
           // Handle nested json of vacation settings
           $mailboxdata['vacation'] = (
-            json_decode($row['c_defaults'], true)['Vacation']
+            json_decode($row['c_defaults'] ?? '[]', true)['Vacation']
           );
 
           if ($mailboxdata['percent_in_use'] === '- ') {
