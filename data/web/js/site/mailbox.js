@@ -1136,12 +1136,12 @@ jQuery(function($){
   }
   function draw_vacation_table() {
     // just recalc width if instance already exists
-    if ($.fn.DataTable.isDataTable('#mailbox_table') ) {
-      $('#mailbox_table').DataTable().columns.adjust().responsive.recalc();
+    if ($.fn.DataTable.isDataTable('#vacation_table') ) {
+      $('#vacation_table').DataTable().columns.adjust().responsive.recalc();
       return;
     }
 
-    var table = $('#mailbox_table').DataTable({
+    var table = $('#vacation_table').DataTable({
       responsive: true,
       processing: true,
       serverSide: true,
@@ -1152,7 +1152,7 @@ jQuery(function($){
         "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
       language: lang_datatables,
       initComplete: function(settings, json){
-        hideTableExpandCollapseBtn('#tab-vacation', '#mailbox_table');
+        hideTableExpandCollapseBtn('#tab-vacation', '#vacation_table');
       },
       ajax: {
         type: "GET",
@@ -1411,7 +1411,7 @@ jQuery(function($){
     });
 
     table.on('responsive-resize', function (e, datatable, columns){
-      hideTableExpandCollapseBtn('#tab-vacation', '#mailbox_table');
+      hideTableExpandCollapseBtn('#tab-vacation', '#vacation_table');
     });
   }
   function draw_templates_mbox_table() {
@@ -2677,7 +2677,7 @@ jQuery(function($){
   onVisible("[id^=domain_table]", () => draw_domain_table());
   onVisible("[id^=templates_domain_table]", () => draw_templates_domain_table());
   onVisible("[id^=mailbox_table]", () => draw_mailbox_table());
-  onVisible("[id^=mailbox_table]", () => draw_vacation_table());
+  onVisible("[id^=vacation_table]", () => draw_vacation_table());
   onVisible("[id^=templates_mbox_table]", () => draw_templates_mbox_table());
   onVisible("[id^=resource_table]", () => draw_resource_table());
   onVisible("[id^=alias_table]", () => draw_alias_table());
