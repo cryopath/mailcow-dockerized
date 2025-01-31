@@ -868,8 +868,8 @@ jQuery(function($){
       stateSave: true,
       pageLength: pagination_size,
       dom: "<'row'<'col-sm-12 col-md-6'f><'col-sm-12 col-md-6'l>>" +
-           "tr" +
-           "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        "tr" +
+        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
       language: lang_datatables,
       initComplete: function(settings, json){
         hideTableExpandCollapseBtn('#tab-mailboxes', '#mailbox_table');
@@ -888,9 +888,9 @@ jQuery(function($){
 
             item.max_quota_for_mbox = humanFileSize(item.max_quota_for_mbox);
             item.last_mail_login = (item.attributes.imap_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">IMAP @ ' + unix_time_format(Number(item.last_imap_login)) + '</div><br>' : '') +
-                                   (item.attributes.pop3_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">POP3 @ ' + unix_time_format(Number(item.last_pop3_login)) + '</div><br>' : '') +
-                                   (item.attributes.smtp_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">SMTP @ ' + unix_time_format(Number(item.last_smtp_login)) + '</div><br>' : '') +
-                                   '<div class="text-start badge bg-info" style="min-width: 70px;">SSO @ ' + unix_time_format(Number(item.last_sso_login)) + '</div>';
+              (item.attributes.pop3_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">POP3 @ ' + unix_time_format(Number(item.last_pop3_login)) + '</div><br>' : '') +
+              (item.attributes.smtp_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">SMTP @ ' + unix_time_format(Number(item.last_smtp_login)) + '</div><br>' : '') +
+              '<div class="text-start badge bg-info" style="min-width: 70px;">SSO @ ' + unix_time_format(Number(item.last_sso_login)) + '</div>';
             /*
             if (!item.rl) {
               item.rl = '∞';
@@ -935,25 +935,25 @@ jQuery(function($){
             if (acl_data.login_as === 1) {
 
               item.action = '<div class="btn-group">' +
-              '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
-              '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
-              '<a href="/index.php?duallogin=' + encodeURIComponent(item.username) + '" class="login_as btn btn-sm btn-xs-lg btn-xs-half btn-success"><i class="bi bi-person-fill"></i> Login</a>';
+                '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
+                '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
+                '<a href="/index.php?duallogin=' + encodeURIComponent(item.username) + '" class="login_as btn btn-sm btn-xs-lg btn-xs-half btn-success"><i class="bi bi-person-fill"></i> Login</a>';
               if (ALLOW_ADMIN_EMAIL_LOGIN) {
                 item.action += '<a href="/sogo-auth.php?login=' + encodeURIComponent(item.username) + '" class="login_as btn btn-sm btn-xs-lg btn-xs-half btn-primary" target="_blank"><i class="bi bi-envelope-fill"></i> SOGo</a>';
               }
               item.action += '</div>';
             }
             else {
-            item.action = '<div class="btn-group">' +
-              '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
-              '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
-              '</div>';
+              item.action = '<div class="btn-group">' +
+                '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
+                '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
+                '</div>';
             }
             item.in_use = {
               sortBy: item.percent_in_use,
               value: '<div class="progress">' +
-              '<div class="progress-bar-mailbox progress-bar progress-bar-' + item.percent_class + '" role="progressbar" aria-valuenow="' + item.percent_in_use + '" aria-valuemin="0" aria-valuemax="100" ' +
-              'style="min-width:2em;width:' + item.percent_in_use + '%">' + item.percent_in_use + '%' + '</div></div>'
+                '<div class="progress-bar-mailbox progress-bar progress-bar-' + item.percent_class + '" role="progressbar" aria-valuenow="' + item.percent_in_use + '" aria-valuemin="0" aria-valuemax="100" ' +
+                'style="min-width:2em;width:' + item.percent_in_use + '%">' + item.percent_in_use + '%' + '</div></div>'
             };
             item.username = escapeHtml(item.username);
 
@@ -1132,6 +1132,286 @@ jQuery(function($){
 
     table.on('responsive-resize', function (e, datatable, columns){
       hideTableExpandCollapseBtn('#tab-mailboxes', '#mailbox_table');
+    });
+  }
+  function draw_vacation_table() {
+    // just recalc width if instance already exists
+    if ($.fn.DataTable.isDataTable('#mailbox_table') ) {
+      $('#mailbox_table').DataTable().columns.adjust().responsive.recalc();
+      return;
+    }
+
+    var table = $('#mailbox_table').DataTable({
+      responsive: true,
+      processing: true,
+      serverSide: true,
+      stateSave: true,
+      pageLength: pagination_size,
+      dom: "<'row'<'col-sm-12 col-md-6'f><'col-sm-12 col-md-6'l>>" +
+        "tr" +
+        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+      language: lang_datatables,
+      initComplete: function(settings, json){
+        hideTableExpandCollapseBtn('#tab-vacation', '#mailbox_table');
+      },
+      ajax: {
+        type: "GET",
+        url: "/api/v1/get/mailbox/datatables",
+        dataSrc: function(json){
+          $.each(json.data, function (i, item) {
+            item.quota = {
+              sortBy: item.quota_used,
+              value: item.quota
+            }
+            item.quota.value = (item.quota.value == 0 ? "∞" : humanFileSize(item.quota.value));
+            item.quota.value = humanFileSize(item.quota_used) + "/" + item.quota.value;
+
+            item.max_quota_for_mbox = humanFileSize(item.max_quota_for_mbox);
+            item.last_mail_login = (item.attributes.imap_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">IMAP @ ' + unix_time_format(Number(item.last_imap_login)) + '</div><br>' : '') +
+              (item.attributes.pop3_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">POP3 @ ' + unix_time_format(Number(item.last_pop3_login)) + '</div><br>' : '') +
+              (item.attributes.smtp_access == 1 ? '<div class="text-start badge bg-info mb-2" style="min-width: 70px;">SMTP @ ' + unix_time_format(Number(item.last_smtp_login)) + '</div><br>' : '') +
+              '<div class="text-start badge bg-info" style="min-width: 70px;">SSO @ ' + unix_time_format(Number(item.last_sso_login)) + '</div>';
+            /*
+            if (!item.rl) {
+              item.rl = '∞';
+            } else {
+              item.rl = $.map(item.rl, function(e){
+                return e;
+              }).join('/1');
+              if (item.rl_scope === 'domain') {
+                item.rl = '<i class="bi bi-arrow-return-right"></i> ' + item.rl + ' (via ' + item.domain + ')';
+              }
+            }
+            */
+            item.chkbox = '<input type="checkbox" class="form-check-input" data-id="mailbox" name="multi_select" value="' + encodeURIComponent(item.username) + '" />';
+            if (item.attributes.passwd_update != '0') {
+              var last_pw_change = new Date(item.attributes.passwd_update.replace(/-/g, "/"));
+              item.last_pw_change = last_pw_change.toLocaleDateString(undefined, {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"});
+            } else {
+              item.last_pw_change = '-';
+            }
+            item.tls_enforce_in = '<i class="text-' + (item.attributes.tls_enforce_in == 1 ? 'success bi bi-lock-fill' : 'danger bi bi-unlock-fill') + '"></i>';
+            item.tls_enforce_out = '<i class="text-' + (item.attributes.tls_enforce_out == 1 ? 'success bi bi-lock-fill' : 'danger bi bi-unlock-fill') + '"></i>';
+            item.pop3_access = '<i class="text-' + (item.attributes.pop3_access == 1 ? 'success' : 'danger') + ' bi bi-' + (item.attributes.pop3_access == 1 ? 'check-lg' : 'x-lg') + '"></i>';
+            item.imap_access = '<i class="text-' + (item.attributes.imap_access == 1 ? 'success' : 'danger') + ' bi bi-' + (item.attributes.imap_access == 1 ? 'check-lg' : 'x-lg') + '"></i>';
+            item.smtp_access = '<i class="text-' + (item.attributes.smtp_access == 1 ? 'success' : 'danger') + ' bi bi-' + (item.attributes.smtp_access == 1 ? 'check-lg' : 'x-lg') + '"></i>';
+            item.sieve_access = '<i class="text-' + (item.attributes.sieve_access == 1 ? 'success' : 'danger') + ' bi bi-' + (item.attributes.sieve_access == 1 ? 'check-lg' : 'x-lg') + '"></i>';
+            if (item.attributes.quarantine_notification === 'never') {
+              item.quarantine_notification = lang.never;
+            } else if (item.attributes.quarantine_notification === 'hourly') {
+              item.quarantine_notification = lang.hourly;
+            } else if (item.attributes.quarantine_notification === 'daily') {
+              item.quarantine_notification = lang.daily;
+            } else if (item.attributes.quarantine_notification === 'weekly') {
+              item.quarantine_notification = lang.weekly;
+            }
+            if (item.attributes.quarantine_category === 'reject') {
+              item.quarantine_category = '<span class="text-danger">' + lang.q_reject + '</span>';
+            } else if (item.attributes.quarantine_category === 'add_header') {
+              item.quarantine_category = '<span class="text-warning">' + lang.q_add_header + '</span>';
+            } else if (item.attributes.quarantine_category === 'all') {
+              item.quarantine_category = lang.q_all;
+            }
+            if (acl_data.login_as === 1) {
+
+              item.action = '<div class="btn-group">' +
+                '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
+                '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
+                '<a href="/index.php?duallogin=' + encodeURIComponent(item.username) + '" class="login_as btn btn-sm btn-xs-lg btn-xs-half btn-success"><i class="bi bi-person-fill"></i> Login</a>';
+              if (ALLOW_ADMIN_EMAIL_LOGIN) {
+                item.action += '<a href="/sogo-auth.php?login=' + encodeURIComponent(item.username) + '" class="login_as btn btn-sm btn-xs-lg btn-xs-half btn-primary" target="_blank"><i class="bi bi-envelope-fill"></i> SOGo</a>';
+              }
+              item.action += '</div>';
+            }
+            else {
+              item.action = '<div class="btn-group">' +
+                '<a href="/edit/mailbox/' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-secondary"><i class="bi bi-pencil-fill"></i> ' + lang.edit + '</a>' +
+                '<a href="#" data-action="delete_selected" data-id="single-mailbox" data-api-url="delete/mailbox" data-item="' + encodeURIComponent(item.username) + '" class="btn btn-sm btn-xs-lg btn-xs-half btn-danger"><i class="bi bi-trash"></i> ' + lang.remove + '</a>' +
+                '</div>';
+            }
+            item.in_use = {
+              sortBy: item.percent_in_use,
+              value: '<div class="progress">' +
+                '<div class="progress-bar-mailbox progress-bar progress-bar-' + item.percent_class + '" role="progressbar" aria-valuenow="' + item.percent_in_use + '" aria-valuemin="0" aria-valuemax="100" ' +
+                'style="min-width:2em;width:' + item.percent_in_use + '%">' + item.percent_in_use + '%' + '</div></div>'
+            };
+            item.username = escapeHtml(item.username);
+
+            if (Array.isArray(item.tags)){
+              var tags = '';
+              for (var i = 0; i < item.tags.length; i++)
+                tags += '<span class="badge bg-primary tag-badge"><i class="bi bi-tag-fill"></i> ' + escapeHtml(item.tags[i]) + '</span>';
+              item.tags = tags;
+            } else {
+              item.tags = '';
+            }
+          });
+
+          return json.data;
+        }
+      },
+      columns: [
+        {
+          // placeholder, so checkbox will not block child row toggle
+          title: '',
+          data: null,
+          searchable: false,
+          orderable: false,
+          defaultContent: '',
+          responsivePriority: 1
+        },
+        {
+          title: '',
+          data: 'chkbox',
+          searchable: false,
+          orderable: false,
+          defaultContent: '',
+          responsivePriority: 2
+        },
+        {
+          title: lang.username,
+          data: 'username',
+          responsivePriority: 3,
+          defaultContent: ''
+        },
+        {
+          title: lang.domain_quota,
+          data: 'quota.value',
+          searchable: false,
+          responsivePriority: 8,
+          defaultContent: ''
+        },
+        {
+          title: lang.last_mail_login,
+          data: 'last_mail_login',
+          searchable: false,
+          defaultContent: '',
+          responsivePriority: 7
+        },
+        {
+          title: lang.last_pw_change,
+          data: 'last_pw_change',
+          searchable: false,
+          defaultContent: ''
+        },
+        {
+          title: lang.in_use,
+          data: 'in_use.value',
+          searchable: false,
+          defaultContent: '',
+          responsivePriority: 9,
+          className: 'dt-data-w100'
+        },
+        {
+          title: lang.fname,
+          data: 'name',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.domain,
+          data: 'domain',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.tls_enforce_in,
+          data: 'tls_enforce_in',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.tls_enforce_out,
+          data: 'tls_enforce_out',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: 'SMTP',
+          data: 'smtp_access',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: 'IMAP',
+          data: 'imap_access',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: 'POP3',
+          data: 'pop3_access',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: 'SIEVE',
+          data: 'sieve_access',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.quarantine_notification,
+          data: 'quarantine_notification',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.quarantine_category,
+          data: 'quarantine_category',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.msg_num,
+          data: 'messages',
+          searchable: false,
+          defaultContent: '',
+          responsivePriority: 5
+        },
+        {
+          title: lang.created_on,
+          data: 'created',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.last_modified,
+          data: 'modified',
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: 'Tags',
+          data: 'tags',
+          searchable: true,
+          defaultContent: '',
+          className: 'none'
+        },
+        {
+          title: lang.active,
+          data: 'active',
+          searchable: false,
+          defaultContent: '',
+          responsivePriority: 4,
+          render: function (data, type) {
+            return 1==data?'<i class="bi bi-check-lg"><span class="sorting-value">1</span></i>':(0==data?'<i class="bi bi-x-lg"><span class="sorting-value">0</span></i>':2==data&&'&#8212;');
+          }
+        },
+        {
+          title: lang.action,
+          data: 'action',
+          searchable: false,
+          orderable: false,
+          className: 'dt-sm-head-hidden dt-data-w100 dtr-col-md dt-text-right',
+          responsivePriority: 6,
+          defaultContent: ''
+        }
+      ]
+    });
+
+    table.on('responsive-resize', function (e, datatable, columns){
+      hideTableExpandCollapseBtn('#tab-vacation', '#mailbox_table');
     });
   }
   function draw_templates_mbox_table() {
@@ -2397,6 +2677,7 @@ jQuery(function($){
   onVisible("[id^=domain_table]", () => draw_domain_table());
   onVisible("[id^=templates_domain_table]", () => draw_templates_domain_table());
   onVisible("[id^=mailbox_table]", () => draw_mailbox_table());
+  onVisible("[id^=mailbox_table]", () => draw_vacation_table());
   onVisible("[id^=templates_mbox_table]", () => draw_templates_mbox_table());
   onVisible("[id^=resource_table]", () => draw_resource_table());
   onVisible("[id^=alias_table]", () => draw_alias_table());
