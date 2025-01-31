@@ -1,7 +1,7 @@
 <div class="tab-pane fade" id="tab-vacation" role="tabpanel" aria-labelledby="tab-mailboxes">
   <div class="card mb-4">
     <div class="card-header d-flex fs-5">
-      <button class="btn d-md-none flex-grow-1 text-start" data-bs-target="#collapse-tab-mailboxes" data-bs-toggle="collapse" aria-controls="collapse-tab-mailboxes">
+      <button class="btn d-md-none flex-grow-1 text-start" data-bs-target="#collapse-tab-vacation" data-bs-toggle="collapse" aria-controls="collapse-tab-vacation">
         {{ lang.mailbox.mailboxes }} <span class="badge bg-info table-lines"></span>
       </button>
       <span class="d-none d-md-block">{{ lang.mailbox.mailboxes }} <span class="badge bg-info table-lines"></span></span>
@@ -10,7 +10,7 @@
         <button class="btn btn-xs btn-secondary refresh_table" data-draw="draw_mailbox_table" data-table="mailbox_table">{{ lang.admin.refresh }}</button>
       </div>
     </div>
-    <div id="collapse-tab-mailboxes" class="card-body collapse" data-bs-parent="#mail-content">
+    <div id="collapse-tab-vacation" class="card-body collapse" data-bs-parent="#mail-content">
       <div class="mass-actions-mailbox mb-4 d-none d-sm-block">
         <div class="btn-group d-flex d-lg-none">
           <a class="btn btn-sm btn-xs-half btn-secondary" id="toggle_multi_select_all" data-id="mailbox" href="#"><i class="bi bi-check-all"></i> {{ lang.mailbox.toggle_all }}</a>
